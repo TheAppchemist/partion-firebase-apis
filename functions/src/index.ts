@@ -17,6 +17,10 @@ import * as UpdateEvent from './modules/events/update-event'
 import * as UpdatePromotions from './modules/promotions/update-promotions'
 import * as CreatePromotions from './modules/promotions/create-promotion'
 import * as CreateSpecials from './modules/specials/create-special'
+import * as Specials from './modules/specials/specials'
+import * as CreateProduct from './modules/products/create-product'
+import * as Products from './modules/products/products'
+import * as Payments from './modules/payments/payments'
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
 //
@@ -36,16 +40,22 @@ export const updateProfile = UpdateProfile.updateProfile
 
 export const bars = Bars.bars
 export const barById = BarById.barById
+export const updateBar = UpdateBar.updateBar
 
 export const events = Events.events
 export const eventById = EventById.eventById
 export const updateEvent = UpdateEvent.updateEvent
-export const updateBar = UpdateBar.updateBar
 
 export const users = Users.users
 export const createUser = CreateUser.createUser
 export const promotions = Promotions.pomotions
-export const updatePromotions = UpdatePromotions
+export const updatePromotions = UpdatePromotions.updatePromotions
 export const createPromotions = CreatePromotions.createPromotions
 
 export const createSpecial = CreateSpecials.createSpecial
+export const specials = Specials.specials
+
+export const createProduct = CreateProduct.createProduct
+export const products = Products.products
+
+export const payments = Payments.payments

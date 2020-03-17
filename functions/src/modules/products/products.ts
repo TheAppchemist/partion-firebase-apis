@@ -1,9 +1,9 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin'
 
-export const specials = functions.https.onRequest((req, res) => {
+export const products = functions.https.onRequest((req, res) => {
     const { barId, venueType } = req.query
-    return admin.database().ref(`specials/${venueType}/${barId}`).once('value').then(snapshot => {
+    return admin.database().ref(`products/${venueType}/${barId}`).once('value').then(snapshot => {
         const data = snapshot.val()
 
         if (data == null) {
@@ -16,7 +16,7 @@ export const specials = functions.https.onRequest((req, res) => {
 
         return res.send({
             success: true,
-            specials: Object.keys(data ? data : {}).map(key => {
+            products: Object.keys(data ? data : {}).map(key => {
                 return {
                     ...data[key],
                     id: key
