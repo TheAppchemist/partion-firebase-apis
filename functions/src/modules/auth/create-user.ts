@@ -11,6 +11,19 @@ export const createUser = functions.https.onRequest((req, res) => {
     }).then(authUser => {
         delete user.password
 
-        return admin.database().ref(`users/${authUser.uid}`).set(user)
+        return admin.database().ref(`users/${authUser.uid}`).set(user).then(() => {
+            return res.send({
+                success: true,
+                user: {
+                    ...user,
+                    id: authUser.uid
+                }
+            })
+        })
+    }).catch(err => {
+        res.status(400)
+        return res.send({
+            message: err
+        })
     })
 })
